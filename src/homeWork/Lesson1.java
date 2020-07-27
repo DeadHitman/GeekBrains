@@ -10,8 +10,11 @@ public class Lesson1 {
 
         System.out.println(compareValues(15, 5));
 
-        Lesson1.compareValues(-1);
-        Lesson1.returnHello("Джон");
+        String values = Lesson1.compareValues(-1);
+        System.out.println(values);
+
+        String name = Lesson1.returnHello("Джон");
+        System.out.println(name);
 
         String year = Lesson1.isLeapYear(2013);
         System.out.println(year);
@@ -32,7 +35,7 @@ public class Lesson1 {
      */
     public static double expression(int a, int b, int c, int d) {
 
-        double result = a * (b + (c / d)); //деление  целых числех, кладется в double
+        double result = a * (b + ((double) c / d)); //деление  целых числех, кладется в double
 
 
         return result;
@@ -49,14 +52,14 @@ public class Lesson1 {
      */
     public static boolean compareValues(int x, int y) {
         int sum = x + y;
+        boolean isIn = sum >= 10 && sum <= 20;
+        if (isIn) {
 
-        if (sum >= 10 && sum <= 20) {
-
-            return true;
+            return isIn;
 
         } else {
 
-            return false;
+            return isIn;
 
         }
 
@@ -68,13 +71,13 @@ public class Lesson1 {
      *
      * @param x
      */
-    public static void compareValues(int x) {
+    public static String compareValues(int x) {
 
 
         if (x >= 0) {
-            System.out.println("Положительное число");
+            return "Положительное число";
         } else {
-            System.out.println("Отрицательное число");
+            return "Отрицательное число";
 
         }
 
@@ -86,13 +89,15 @@ public class Lesson1 {
      *
      * @param name
      */
-    public static void returnHello(String name) {
-        System.out.println("Привет, " + name + "!");
+    public static String returnHello(String name) {
+
+        return "Привет, " + name + "!";
     }
 
     /**
-     *  5 Задание Написать метод, который определяет является ли год високосным. Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
-     *  Для проверки работы вывести результаты работы метода в консоль
+     * 5 Задание Написать метод, который определяет является ли год високосным. Каждый 4-й год является високосным, кроме каждого 100-го, при этом каждый 400-й – високосный.
+     * Для проверки работы вывести результаты работы метода в консоль
+     *
      * @param year
      * @return
      */
@@ -100,9 +105,9 @@ public class Lesson1 {
 
         if (year % 4 == 0 || year % 400 == 0 && year % 100 != 0) {
 
-            return "Год = " + year + " - Високосный";
+            return "Високосный Год = " + year;
         } else {
-            return "Год = " + year + " - Не високосный";
+            return "Не Високосный Год = " + year;
 
         }
 
