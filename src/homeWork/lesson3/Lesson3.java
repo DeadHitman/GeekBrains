@@ -1,4 +1,4 @@
-package lessons_java_one.lesson1;
+package homeWork.lesson3;
 
 import java.util.Random;
 import java.util.Scanner;
@@ -47,7 +47,7 @@ public class Lesson3 {
         int x;
         int y;
         do {
-            System.out.println("Введите координаты хода X и Y (от 1 до " + fieldSizeY + ") через пробел >>> ");
+            System.out.println("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ X пїЅ Y (пїЅпїЅ 1 пїЅпїЅ " + fieldSizeY + ") пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ >>> ");
             x = SCANNER.nextInt() - 1;
             y = SCANNER.nextInt() - 1;
         } while (!isValidCell(x, y) || !isEmptyCell(x, y));
@@ -82,7 +82,7 @@ public class Lesson3 {
     }
 
     /**
-     *  2 Переделать проверку победы, чтобы она не была реализована просто набором условий.
+     *  2 пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ.
      * @param c
      * @return
      */

@@ -1,7 +1,4 @@
-package Lesson4;
-
-import java.util.Arrays;
-import java.util.Random;
+package homeWork.lesson4;
 
 public class Application {
 
