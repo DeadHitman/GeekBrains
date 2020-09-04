@@ -1,4 +1,4 @@
-package homeWork.lesson4;
+package homeWork.java1_1.lesson4;
 
 import java.util.Random;
 import java.util.UUID;

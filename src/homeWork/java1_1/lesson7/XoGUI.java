@@ -1,7 +1,5 @@
-package homeWork.lesson7;
+package homeWork.java1_1.lesson7;
 
-import javax.swing.*;
-import java.awt.*;
 //JavaFX
 //thymeleaf
 //VAADIN
