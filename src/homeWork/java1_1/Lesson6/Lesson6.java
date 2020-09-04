@@ -1,7 +1,6 @@
-package homeWork.Lesson6;
+package homeWork.java1_1.Lesson6;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.Random;
 import java.util.Scanner;
 

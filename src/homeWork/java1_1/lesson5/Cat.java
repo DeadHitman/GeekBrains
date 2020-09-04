@@ -1,4 +1,4 @@
-package homeWork.lesson5;
+package homeWork.java1_1.lesson5;
 
 public class Cat extends Animal {
     private final double runLenghtLimit;

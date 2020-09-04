@@ -1,4 +1,4 @@
-package homeWork.lesson4;
+package homeWork.java1_1.lesson4;
 
 public class Application {
 

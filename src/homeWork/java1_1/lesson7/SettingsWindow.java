@@ -1,6 +1,4 @@
-package homeWork.lesson7;
-
-import org.omg.SendingContext.RunTime;
+package homeWork.java1_1.lesson7;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;

@@ -1,4 +1,4 @@
-package lessons_java_one.lesson1;
+package homeWork.java1_1.lesson1;
 
 public class Lesson1 {
 
