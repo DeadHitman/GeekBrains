@@ -8,12 +8,19 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler, SocketThreadListener {
 
@@ -94,6 +101,8 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
             sendMessage();
         } else if (src == btnLogin) {
             connect();
+            //Читаем из файла последние 100 строк
+            readMsgFromLogFile();
         } else if (src == btnDisconnect) {
             socketThread.close();
         } else {
@@ -116,8 +125,17 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         tfMessage.setText(null);
         tfMessage.grabFocus();
         socketThread.sendMessage(Common.getTypeBcastClient(msg));
+        //записываем в файл
+        wrtMsgToLogFile(msg, tfLogin.getText());
+
     }
 
+    /**
+     * Добавить в сетевой чат запись локальной истории в текстовый файл на клиенте.
+     *
+     * @param msg
+     * @param username
+     */
     private void wrtMsgToLogFile(String msg, String username) {
         try (FileWriter out = new FileWriter("log.txt", true)) {
             out.write(username + ": " + msg + "\n");
@@ -129,6 +147,41 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
             }
         }
     }
+
+    /**
+     * 2. После загрузки клиента показывать ему последние 100 строк чата.
+     */
+    private void readMsgFromLogFile() {
+        try {
+            File file = new File("log.txt");
+            List<String> allLines = Files.readAllLines(Paths.get(file.toURI()), StandardCharsets.UTF_8);
+
+            ArrayList<String> last100lines = new ArrayList<>();
+
+            if (allLines.size() < 100 && allLines.size() > 0) {
+                for (int i = 0; i < allLines.size(); i++) {
+                    last100lines.add(allLines.get(i));
+                    log.append(last100lines.get(i) + "\n");
+                }
+            } else {
+                Collections.reverse(allLines);
+                for (int i = 0; i < 100; i++) {
+                    last100lines.add(allLines.get(i));
+                }
+                Collections.reverse(last100lines);
+
+                for (int i = 0; i < last100lines.size(); i++) {
+                    log.append(last100lines.get(i) + "\n");
+                }
+            }
+        } catch (IOException e) {
+            if (!shownIoErrors) {
+                shownIoErrors = true;
+                showException(Thread.currentThread(), e);
+            }
+        }
+    }
+
 
     private void putLog(String msg) {
         if ("".equals(msg)) return;
